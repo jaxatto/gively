@@ -20,4 +20,4 @@ for (let table of tableData) {
   seed(knex, table);
 }
 
-exports.default = knex;
+module.exports = knex;
