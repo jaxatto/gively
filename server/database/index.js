@@ -16,8 +16,11 @@ const seed = (knex, table) => {
     .then(() => knex(table.name).insert(table.data));
 };
 
+const seedDatabase = () => {
+
 for (let table of tableData) {
   seed(knex, table);
+}	
 }
 
 exports.default = knex;
