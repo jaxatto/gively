@@ -9,6 +9,15 @@ var knex = require("knex")({
   }
 });
 
-knex("event")
-  .select("id")
-  .then(event => console.log(event));
+const seed = (knex, table) => {
+  //name: , data:
+  knex(table.name)
+    .del()
+    .then(() => knex(table.name).insert(table.data));
+};
+
+for (let table of tableData) {
+  seed(knex, table);
+}
+
+exports.default = knex;
