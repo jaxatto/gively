@@ -1,4 +1,4 @@
-[
+module.exports = [
   {
     name: "Alzheimer’s Texas",
     address: "3520 Executive Center Drive, Ste. 140, Austin",

@@ -1,4 +1,4 @@
-[
+module.exports = [
   {
     name: "Halloween at the Garden Event Day Volunteering",
     description:

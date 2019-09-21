@@ -1,4 +1,4 @@
-[
+module.exports = [
   {
     name: "Visa",
     address: "12301 Research Blvd, Austin, TX 78759",

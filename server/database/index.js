@@ -1,4 +1,10 @@
-var knex = require("knex")({
+const associations = require("./seeds/01_associations");
+const companies = require("./seeds/02_companies");
+const volunteers = require("./seeds/03_volunteers");
+const events = require("./seeds/04_events");
+const categories = require("./seeds/05_categories");
+
+const knex = require("knex")({
   client: "pg",
   version: "10.6",
   connection: {
@@ -9,6 +15,14 @@ var knex = require("knex")({
   }
 });
 
+const theData = [
+  { name: "association", data: associations },
+  { name: "company", data: companies },
+  { name: "volunteer", data: volunteers },
+  { name: "event", data: events },
+  { name: "categories", data: categories }
+];
+
 const seed = (knex, table) => {
   //name: , data:
   knex(table.name)
@@ -16,11 +30,12 @@ const seed = (knex, table) => {
     .then(() => knex(table.name).insert(table.data));
 };
 
-const seedDatabase = () => {
+const seedDatabase = tableData => {
+  for (let table of tableData) {
+    seed(knex, table);
+  }
+};
 
-for (let table of tableData) {
-  seed(knex, table);
-}	
-}
+seedDatabase(theData);
 
 module.exports = knex;
