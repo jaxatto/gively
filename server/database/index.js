@@ -23,4 +23,4 @@ for (let table of tableData) {
 }	
 }
 
-exports.default = knex;
+module.exports = knex;
