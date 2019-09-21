@@ -1,14 +1,14 @@
 module.exports = [
   {
-    name: "Children and youth"
+    category: "Children and youth"
   },
   {
-    name: "Seniors"
+    category: "Seniors"
   },
   {
-    name: "Intellectual and developmental disabilities"
+    category: "Intellectual and developmental disabilities"
   },
   {
-    name: "Community"
+    category: "Community"
   }
 ];

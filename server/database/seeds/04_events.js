@@ -7,7 +7,7 @@ module.exports = [
     date: "2019-10-25",
     start_time: "09:30:00",
     end_time: "11:30:00",
-    association_id: 3
+    //association_id: 3
   },
   {
     name: "Volunteer at the Urban Roots Farm",
@@ -17,7 +17,7 @@ module.exports = [
     date: "2019-09-26",
     start_time: "17:00:00",
     end_time: "20:00:00",
-    association_id: 2
+   // association_id: 2
   },
   {
     name: "September Volunteer Meeting",
@@ -26,8 +26,8 @@ module.exports = [
     address: "508 S Rock St 508 South Rock Street Georgetown, TX 78626",
     date: "2019-09-30",
     start_time: "15:00:00",
-    end_time: "29:30:00",
-    association_id: 1
+    end_time: "21:30:00",
+   // association_id: 1
   },
   {
     name: "Casa Volunteer Party",
@@ -36,7 +36,7 @@ module.exports = [
     date: "2019-10-15",
     start_time: "13:00:00",
     end_time: "17:30:00",
-    association_id: 4
+    //association_id: 4
   },
   {
     name: "Taste of Pan Africa Food Festival Austin",
@@ -46,7 +46,7 @@ module.exports = [
     date: "2019-10-18",
     start_time: "17:00:00",
     end_time: "19:00:00",
-    association_id: 5
+    //association_id: 5
   },
   {
     name: "PIP Luncheon Host Committee Kick-Off Party!",
@@ -55,8 +55,8 @@ module.exports = [
     address: "The Riveter: Austin 1145 West 5th Street Austin, TX 78703",
     date: "2019-10-05",
     start_time: "16:00:00",
-    end_time: "29:00:00",
-    association_id: 6
+    end_time: "21:00:00",
+   // association_id: 6
   },
   {
     name: "I Live Here I Give Here Meetup: Williamson & Burnet Counties",
@@ -65,7 +65,7 @@ module.exports = [
     date: "2019-11-06",
     start_time: "18:30:00",
     end_time: "20:30:00",
-    association_id: 7
+    //association_id: 7
   },
   {
     name: "Community Volunteer Picnik",
@@ -74,6 +74,6 @@ module.exports = [
     date: "2019-11-15",
     start_time: "11:00:00",
     end_time: "14:00:00",
-    association_id: 8
+   // association_id: 8
   }
 ];
