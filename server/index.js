@@ -16,35 +16,35 @@ app.get("/", (req, res) => res.send("Hello World!"));
 app.get("/users", (req, res) => {
   getUsers().then(users => {
     console.log("server users", users);
-    res(users);
+    res.send(users);
   });
 });
 
 app.get("/events", (req, res) => {
   getEvents().then(events => {
     console.log("server users", events);
-    res(events);
+    res.send(events);
   });
 });
 
 app.get("/companies", (req, res) => {
   getCompanies().then(companies => {
     console.log("server users", companies);
-    res(companies);
+    res.send(companies);
   });
 });
 
 app.get("/associations", (req, res) => {
   getAssociations().then(associations => {
     console.log("server users", associations);
-    res(associations);
+    res.send(associations);
   });
 });
 
 app.get("/volunteerwork", (req, res) => {
   getVolunteerWork().then(work => {
     console.log("server users", work);
-    res(work);
+    res.send(work);
   });
 });
 
