@@ -5,6 +5,7 @@ import {
   Container,
   Content,
   Icon,
+  H3,
   List,
   ListItem,
   Left,
@@ -14,22 +15,27 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 
 class EventCard extends Component {
   render() {
+    const { name, description, date, startTime, endTime } = this.props;
     return (
       <Grid>
         <Row>
-          <Col></Col>
-          <Col>
+          <Col size={1}></Col>
+          <Col size={3}>
             <Row>
-              <Text>Walk some cute dogs</Text>
+              <H3 style={{ fontWeight: "bold", fontSize: 14 }}>
+                {description}
+              </H3>
             </Row>
             <Row>
-              <Text>Austin Pets Alive</Text>
+              <Text>{name}</Text>
             </Row>
             <Row>
-              <Text>Sunday, September 22</Text>
+              <Text>{date}</Text>
             </Row>
             <Row>
-              <Text>9:00am - 2:00pm</Text>
+              <Text>
+                {startTime} - {endTime}
+              </Text>
             </Row>
           </Col>
         </Row>
