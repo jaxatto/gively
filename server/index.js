@@ -16,35 +16,35 @@ app.get("/", (req, res) => res.send("Hello World!"));
 app.get("/users", (req, res) => {
   getUsers().then(users => {
     console.log("server users", users);
-    res.send(users);
+    res.send(JSON.stringify(users));
   });
 });
 
 app.get("/events", (req, res) => {
   getEvents().then(events => {
     console.log("server users", events);
-    res.send(events);
+    res.send(JSON.stringify(events));
   });
 });
 
 app.get("/companies", (req, res) => {
   getCompanies().then(companies => {
     console.log("server users", companies);
-    res.send(companies);
+    res.send(JSON.stringify(companies));
   });
 });
 
 app.get("/associations", (req, res) => {
   getAssociations().then(associations => {
     console.log("server users", associations);
-    res.send(associations);
+    res.send(JSON.stringify(associations));
   });
 });
 
 app.get("/volunteerwork", (req, res) => {
   getVolunteerWork().then(work => {
     console.log("server users", work);
-    res.send(work);
+    res.send(JSON.stringify(work));
   });
 });
 
