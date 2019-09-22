@@ -32,7 +32,8 @@ const DATA = [
     date: "2019-10-25",
     start_time: "09:30:00",
     end_time: "11:30:00",
-    id: "1"
+    id: "1",
+    image: "logo-apa.png"
   },
   {
     name: "September Volunteer Meeting",
@@ -42,7 +43,8 @@ const DATA = [
     date: "2019-09-30",
     start_time: "15:00:00",
     end_time: "21:30:00",
-    id: "2"
+    id: "2",
+    image: "logo-bbbs.png"
   },
   {
     name: "Casa Volunteer Party",
@@ -51,7 +53,8 @@ const DATA = [
     date: "2019-10-15",
     start_time: "13:00:00",
     end_time: "17:30:00",
-    id: "3"
+    id: "3",
+    image: "logo-ctfb.svg"
   },
   {
     name: "Taste of Pan Africa Food Festival Austin",
@@ -61,7 +64,8 @@ const DATA = [
     date: "2019-10-18",
     start_time: "17:00:00",
     end_time: "19:00:00",
-    id: "4"
+    id: "4",
+    image: "logo-girlstart.png"
   }
 ];
 
@@ -128,6 +132,9 @@ class Feed extends Component {
                         borderColor: "#15AC8C !important",
                         color: "red !important"
                       }}
+                      onPress={() =>
+                        this.props.navigation.navigate("ProfilePage")
+                      }
                     >
                       <Text>MY PROFILE</Text>
                       <Icon name="arrow-round-forward" />
@@ -171,7 +178,8 @@ class Feed extends Component {
                           description={item.description}
                           date={item.date}
                           startTime={item.start_time}
-                          endTime={item.end_Time}
+                          endTime={item.end_time}
+                          image={item.image}
                           onPress={() =>
                             this.props.navigation.navigate("EventPage", {
                               key: item.id,

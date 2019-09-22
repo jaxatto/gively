@@ -24,8 +24,12 @@ class EventCard extends Component {
       startTime,
       endTime,
       id,
-      onPress
+      onPress,
+      image
     } = this.props;
+    console.log("IMAGE", image.trim());
+    const imageSource = `../assets/images/${image.trim()}`;
+    console.log(imageSource);
     const dateDate = new Date(date);
     const startTimeDate = new Date(`January 1, 2019 ${startTime}`);
     const endTimeDate = endTime ? new Date(`January 1, 2019 ${endTime}`) : null;
@@ -59,8 +63,7 @@ class EventCard extends Component {
       <Grid style={stylesCard.card}>
         <Row>
           <Col size={1}>
-            <Text>{id}</Text>
-            <Image source={{ uri: id }} />
+            <Image source={require("../assets/images/logo-apa.png")} />
           </Col>
           <Col size={3}>
             <Row>
