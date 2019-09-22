@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Container, Header, Content, Icon, Text, View } from "native-base";
+import React from "react";
+import { Content, Icon, View } from "native-base";
 
 const IconText = ({ iconName = "menu", children }) => {
   return (

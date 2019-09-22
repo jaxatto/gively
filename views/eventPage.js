@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, Text, View, Image } from "react-native";
+import { Text, View, Image } from "react-native";
 import IconText from "../components/iconText";
-import axios from "axios";
 import moment from "moment";
 import {
   Container,
-  Header,
   Content,
   Icon,
   Card,
   CardItem,
-  Left,
-  Right,
-  Body,
   Button,
   Footer
 } from "native-base";
