@@ -55,6 +55,16 @@ export class Profile extends Component {
             </Button>
           </Right>
         </Header>
+        <Container
+          style={{ backgroundColor: "#15AC8C", padding: 15, height: "auto" }}
+        >
+          <Row>
+            <H2 style={{ color: "white" }}>2 Rewards</H2>
+          </Row>
+          <Row>
+            <Text>You have rewards ready to donate!</Text>
+          </Row>
+        </Container>
       </Container>
     );
   }
