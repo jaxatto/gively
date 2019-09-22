@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View, Image } from "react-native";
 import IconText from "../components/iconText";
 import axios from "axios";
 import moment from "moment";
@@ -31,6 +31,9 @@ const EventPage = ({ event }) => {
     console.log("Back Button pressed", e);
   };
 
+  const handleSignUp = e => {
+    console.log(e);
+  };
   async function getMyStuff(link) {
     try {
       const response = await fetch(link);
@@ -56,7 +59,7 @@ const EventPage = ({ event }) => {
     //console.log("MY SINGLE EVENT", stuff[0]);
   }, []);
   // console.log("events", events);
-  //const singleEvent = {};
+  //const currentEvent = {};
   const eventParser = event => {
     console.log("MY EVENT EVENT", event);
     // if (!event) {
@@ -87,14 +90,17 @@ const EventPage = ({ event }) => {
       points,
       name,
       address,
+      dateLine,
+      timeLine,
       date: [dateLine, timeLine],
       description
     };
   };
 
+  const currentEvent = event || singleEvent;
   return (
     <Container>
-      <Header>
+      <Header style={{ height: 75 }}>
         <Left>
           <Button
             transparent
@@ -109,7 +115,7 @@ const EventPage = ({ event }) => {
         <Right />
       </Header>
 
-      <ScrollView>
+      <Content>
         <View
           style={{
             flex: 1,
@@ -117,23 +123,58 @@ const EventPage = ({ event }) => {
             //justifyContent: "space-between"
           }}
         >
-          {singleEvent !== undefined ? (
+          <Image
+            source={require("../assets/images/detail.png")}
+            style={{ width: "100%" }}
+          />
+          <Container
+            style={{
+              position: "relative",
+              width: "100%",
+              height: 0,
+              zIndex: 1
+            }}
+          >
+            <Container
+              transform={[{ translateX: -50 }, { translateY: -50 }]}
+              style={{
+                position: "absolute",
+                left: "45%",
+                backgroundColor: "white",
+                padding: 35,
+                borderRadius: 3000,
+                height: "auto"
+                // transform: [{ translateX: "-50%" }, { translateY: "-50%" }]
+              }}
+            >
+              <Image source={require("../assets/images/logo-apa.png")} />
+            </Container>
+          </Container>
+
+          {currentEvent !== undefined ? (
             <Card transparent>
               <CardItem>
                 <IconText>
-                  <Text>{`${singleEvent.points} points`}</Text>
+                  <CardItem>
+                    <Text>{`${currentEvent.points} points`}</Text>
+                  </CardItem>
                 </IconText>
               </CardItem>
               <CardItem>
                 <IconText>
-                  <Text>{singleEvent.name}</Text>
+                  <CardItem>
+                    <Text>{currentEvent.name}</Text>
+                  </CardItem>
                 </IconText>
               </CardItem>
               <CardItem>
                 <IconText>
-                  {console.log(singleEvent)}
-                  {/* {console.log(singleEvent)}
-                  {singleEvent.address.map(addressLine => {
+                  <CardItem>
+                    <Text>{currentEvent.address}</Text>
+                  </CardItem>
+
+                  {/* {console.log(currentEvent)}
+                  {currentEvent.address.map(addressLine => {
                     return (
                       <CardItem>
                         <Text>{addressLine}</Text>
@@ -144,17 +185,24 @@ const EventPage = ({ event }) => {
               </CardItem>
               <CardItem>
                 <IconText>
-                  {console.log("DATE EVent", typeof singleEvent.date)}
-                  <Text>{singleEvent.address}</Text>
-                  {/* {singleEvent.date.map(dateLine => {
+                  <CardItem>
+                    <Text>{`${currentEvent.dateLine}\n${currentEvent.timeLine}`}</Text>
+                  </CardItem>
+                  {/* {console.log("DATE EVent", typeof currentEvent.date)} */}
+
+                  {/* {currentEvent.date.map(dateLine => {
                     <CardItem>
                       <Text>{dateLine}</Text>
                     </CardItem>;
                   })} */}
                 </IconText>
               </CardItem>
-              {/* {singleEvent
-              ? singleEvent.keys.map((ev, i) => {
+              <CardItem>
+                <Text>{currentEvent.description}</Text>
+              </CardItem>
+
+              {/* {currentEvent
+              ? currentEvent.keys.map((ev, i) => {
                   return (
                     <CardItem>
                       <IconText key={i} iconName={ev.iconName || "menu"}>
@@ -169,12 +217,13 @@ const EventPage = ({ event }) => {
             </Card>
           ) : null}
         </View>
-        <Footer>
-          <Button>
-            <Text>Sign Up Now</Text>
-          </Button>
-        </Footer>
-      </ScrollView>
+      </Content>
+      <Footer>
+        <Button onPress={handleSignUp} rounded style={{ paddingLeft: 10 }}>
+          <Text>Sign Up Now</Text>
+          <Icon name="arrow-forward" />
+        </Button>
+      </Footer>
     </Container>
   );
 };
