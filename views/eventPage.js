@@ -17,6 +17,8 @@ import {
   Footer
 } from "native-base";
 
+import events from "../server/database/seeds/04_events";
+
 const mockEvents = [
   { text: ["500 points"] },
   { text: ["Animals"] },
@@ -24,28 +26,39 @@ const mockEvents = [
   { text: ["SOMETHING LONG AGAIN", "LINE 2"] }
 ];
 const EventPage = ({ event }) => {
-  const [apiEvents, setEvents] = useState([]);
-
+  const [singleEvent, setEvent] = useState({});
   const handleBackButtonPress = e => {
     console.log("Back Button pressed", e);
   };
 
-  useEffect(() => {
-    axios
-      .get("http://52.207.139.224:3000/events")
-      .then(response => {
-        // console.log("RESPONSE", response.data);
-        const parsed = eventParser(JSON.parse(response.data[0]));
-        console.log("PARSED", parsed);
-        setEvents(parsed);
-      })
-      .catch(e => {
-        throw new Error(e);
-      });
-  }, []);
+  async function getMyStuff(link) {
+    try {
+      const response = await fetch(link);
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new TypeError("Oops, we haven't got JSON!");
+      }
+      const object = await response.json();
+      console.log("RESPONSE", object);
+      setEvent(eventParser(object[0]));
 
+      /* process your JSON further */
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    // axios.get("http://52.207.139.224:3000/events").then(response => {
+    //   console.log("full response", response.body);
+    // });
+    const stuff = getMyStuff("http://52.207.139.224:3000/events");
+    //console.log("MY SINGLE EVENT", stuff[0]);
+  }, []);
+  // console.log("events", events);
+  //const singleEvent = {};
   const eventParser = event => {
-    console.log(event);
+    console.log("MY EVENT EVENT", event);
     // if (!event) {
     //   return {};
     // }
@@ -63,7 +76,7 @@ const EventPage = ({ event }) => {
     points *= 10;
 
     const { name, date, description, address, start_time, end_time } = event;
-
+    console.log("Address", address);
     const addressLines = address.split(",");
     const dateLine = moment(date).format("dddd, MMMM D");
     const timeLine = `${moment(start_time, "HH:mm:SS").format(
@@ -73,7 +86,7 @@ const EventPage = ({ event }) => {
     return {
       points,
       name,
-      address: [addressLines[0], addressLines[1]],
+      address,
       date: [dateLine, timeLine],
       description
     };
@@ -104,24 +117,26 @@ const EventPage = ({ event }) => {
             //justifyContent: "space-between"
           }}
         >
-          {apiEvents !== undefined ? (
+          {singleEvent !== undefined ? (
             <Card transparent>
               <CardItem>
                 <IconText>
-                  <Text>{`${apiEvents.points} points`}</Text>
+                  <Text>{`${singleEvent.points} points`}</Text>
                 </IconText>
               </CardItem>
               <CardItem>
                 <IconText>
-                  <Text>{apiEvents.name}</Text>
+                  <Text>{singleEvent.name}</Text>
                 </IconText>
               </CardItem>
               <CardItem>
                 <IconText>
-                  {/* {apiEvents.address.keys().map(key => {
+                  {console.log(singleEvent)}
+                  {/* {console.log(singleEvent)}
+                  {singleEvent.address.map(addressLine => {
                     return (
                       <CardItem>
-                        <Text>apiEvents[${key}]</Text>
+                        <Text>{addressLine}</Text>
                       </CardItem>
                     );
                   })} */}
@@ -129,16 +144,17 @@ const EventPage = ({ event }) => {
               </CardItem>
               <CardItem>
                 <IconText>
-                  {console.log("DATE EVent", typeof apiEvents.date)}
-                  {apiEvents.date.map(dateLine => {
+                  {console.log("DATE EVent", typeof singleEvent.date)}
+                  <Text>{singleEvent.address}</Text>
+                  {/* {singleEvent.date.map(dateLine => {
                     <CardItem>
                       <Text>{dateLine}</Text>
                     </CardItem>;
-                  })}
+                  })} */}
                 </IconText>
               </CardItem>
-              {/* {apiEvents
-              ? apiEvents.keys.map((ev, i) => {
+              {/* {singleEvent
+              ? singleEvent.keys.map((ev, i) => {
                   return (
                     <CardItem>
                       <IconText key={i} iconName={ev.iconName || "menu"}>

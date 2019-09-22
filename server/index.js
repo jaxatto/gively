@@ -23,7 +23,7 @@ app.get("/users", (req, res) => {
 app.get("/events", (req, res) => {
   getEvents().then(events => {
     console.log("server users", events);
-    res.send(JSON.stringify(events));
+    res.json(events);
   });
 });
 
