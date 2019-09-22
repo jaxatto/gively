@@ -5,37 +5,54 @@ import {
   Container,
   Content,
   Icon,
+  H3,
   List,
   ListItem,
   Left,
   Text
 } from "native-base";
 import { Col, Row, Grid } from "react-native-easy-grid";
+import { stylesCard } from "./eventCard.styles";
 
 class EventCard extends Component {
   render() {
+    const { name, description, date, startTime, endTime } = this.props;
     return (
-      <Container>
-        <Text>Walk some cute dogs</Text>
-        <Text>Austin Pets Alive</Text>
-        <Text>Sunday, September 22</Text>
-        <Text>9:00am - 2:00pm</Text>
-
-        <Icon
-          name="star-outline"
-          style={{
-            fontSize: 20,
-            color: "#15AC8C",
-            padding: 15
-          }}
-        />
-        <Text style={{ color: "#15AC8C" }}>500 points</Text>
-
-        <Button iconRight transparent>
-          <Text>Sign Up</Text>
-          <Icon name="arrow-forward" />
-        </Button>
-      </Container>
+      <Grid>
+        <Row>
+          <Col size={1}></Col>
+          <Col size={3}>
+            <Row>
+              <H3 style={stylesCard.h3}>{name}</H3>
+            </Row>
+            <Row>
+              <Text>{description}</Text>
+            </Row>
+            <Row>
+              <Text>{date}</Text>
+            </Row>
+            <Row>
+              <Text>
+                {startTime} - {endTime}
+              </Text>
+            </Row>
+            <Row>
+              <Col style={stylesCard.col}>
+                <Text style={stylesCard.text}>
+                  <Icon name="star-outline" style={stylesCard.star} />
+                  &nbsp;500 points
+                </Text>
+              </Col>
+              <Col>
+                <Text style={stylesCard.signup}>
+                  Sign Up&nbsp;
+                  <Icon name="arrow-forward" style={stylesCard.arrow} />
+                </Text>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }
