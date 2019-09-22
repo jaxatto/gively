@@ -20,55 +20,55 @@ class Feed extends Component {
   render() {
     return (
       <Container>
-        <Container>
-          <Header transparent>
-            <Left>
-              <Title
+        <Header transparent>
+          <Left>
+            <Title
+              style={{
+                color: "#0C0778",
+                padding: 10,
+                fontSize: 16
+              }}
+            >
+              Hi Sally!
+            </Title>
+          </Left>
+          <Right>
+            <Button transparent>
+              <Icon
+                name="menu"
                 style={{
-                  color: "#0C0778",
-                  padding: 10,
-                  fontSize: 16
+                  color: "#0C0778"
+                }}
+              />
+            </Button>
+          </Right>
+        </Header>
+        <Text
+          style={{
+            fontSize: 18
+          }}
+        >
+          You have no upcoming events
+        </Text>
+        <Grid>
+          <Row>
+            <Col>
+              <Button
+                rounded
+                style={{
+                  color: "#15AC8C",
+                  borderColor: "#15AC8C"
                 }}
               >
-                Hi Sally!
-              </Title>
-            </Left>
-            <Right>
-              <Button transparent>
-                <Icon
-                  name="menu"
-                  style={{
-                    color: "#0C0778"
-                  }}
-                />
+                <Text>MY REWARDS</Text>
+                <Icon name="arrow-forward" />
               </Button>
-            </Right>
-          </Header>
-          <Text
-            style={{
-              fontSize: 18
-            }}
-          >
-            You have no upcoming events
-          </Text>
+            </Col>
+            <Col></Col>
+          </Row>
+          <Image source={require("../assets/images/pngs/list-empty.png")} />
           <Grid>
-            <Row>
-              <Col>
-                <Button
-                  rounded
-                  style={{
-                    color: "#15AC8C",
-                    borderColor: "#15AC8C"
-                  }}
-                >
-                  <Text>MY REWARDS</Text>
-                  <Icon name="arrow-forward" />
-                </Button>
-              </Col>
-              <Col></Col>
-            </Row>
-            <Image source={require("../assets/images/pngs/list-empty.png")} />
-            <Grid>
+            <Content padder>
               <Row>
                 <Text
                   style={{
@@ -79,19 +79,13 @@ class Feed extends Component {
                   Explore Austin Events
                 </Text>
               </Row>
-              <Row>
-                <Content padder>
-                  <Row>
-                    <EventCard />
-                  </Row>
-                  <Row>
-                    <EventCard />
-                  </Row>
-                </Content>
-              </Row>
-            </Grid>
+
+              <EventCard />
+
+              <EventCard />
+            </Content>
           </Grid>
-        </Container>
+        </Grid>
       </Container>
     );
   }
