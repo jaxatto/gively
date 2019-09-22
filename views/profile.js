@@ -1,32 +1,17 @@
 import React, { Component } from "react";
+import { View } from "react-native";
+import { Row } from "react-native-easy-grid";
 import {
-  ScrollView,
-  Image,
-  StyleSheet,
-  View,
-  SafeAreaView,
-  FlatList
-} from "react-native";
-import { Col, Row, Grid } from "react-native-easy-grid";
-import buttonTheme from "./Themes/buttonTheme";
-import {
-  Container,
   Header,
   Content,
   Button,
   H1,
   H2,
-  H3,
-  List,
-  ListItem,
   Left,
   Right,
   Icon,
-  Text,
-  Title,
-  StyleProvider
+  Text
 } from "native-base";
-import EventCard from "../components/eventCard";
 
 export class Profile extends Component {
   render() {

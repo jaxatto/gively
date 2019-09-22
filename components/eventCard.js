@@ -1,16 +1,5 @@
 import React, { Component } from "react";
-import {
-  Body,
-  Button,
-  Container,
-  Content,
-  Icon,
-  H3,
-  List,
-  ListItem,
-  Left,
-  Text
-} from "native-base";
+import { Icon, H3, Text } from "native-base";
 import { Image } from "react-native";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { stylesCard } from "./eventCard.styles";
@@ -23,7 +12,6 @@ class EventCard extends Component {
       date,
       startTime,
       endTime,
-      id,
       onPress,
       image
     } = this.props;

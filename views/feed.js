@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import {
-  ScrollView,
   Image,
-  StyleSheet,
   View,
   SafeAreaView,
   FlatList
@@ -18,8 +16,7 @@ import {
   Left,
   Right,
   Icon,
-  Text,
-  TouchableHighlight
+  Text
 } from "native-base";
 import EventCard from "../components/eventCard";
 
