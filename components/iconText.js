@@ -1,20 +1,21 @@
 import React, { Component } from "react";
-import { Container, Header, Content, Icon } from "native-base";
-export default class IconExample extends Component {
-  render() {
-    return (
-      <Container>
-        <Header />
-        <Content>
-          <Icon name="home" />
+import { Container, Header, Content, Icon, Text, View } from "native-base";
+
+const IconText = ({ iconName = "menu", children }) => {
+  return (
+    <Container>
+      <Header />
+      <Content>
+        <View style={{ flexDirection: "row", flex: 1, alignItems: "center" }}>
           <Icon
-            ios="ios-menu"
-            android="md-menu"
-            style={{ fontSize: 20, color: "red" }}
-          />
-          <Icon type="FontAwesome" name="home" />
-        </Content>
-      </Container>
-    );
-  }
-}
+            ios={`ios-${iconName}`}
+            android={`ios-${iconName}`}
+            style={{ fontSize: 20, padding: 10 }}
+          ></Icon>
+          {children}
+        </View>
+      </Content>
+    </Container>
+  );
+};
+export default IconText;
