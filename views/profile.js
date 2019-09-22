@@ -30,7 +30,13 @@ export class Profile extends Component {
           </Right>
         </Header>
         <Content>
-          <Banner title="2 rewards" body="You have rewards ready to donate!" />
+          <Banner
+            icon="gift"
+            title="2 rewards"
+            body="You have rewards ready to donate!"
+            icon="gift"
+            button="Redeem"
+          />
         </Content>
       </>
     );
