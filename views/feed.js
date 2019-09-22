@@ -141,9 +141,7 @@ class Feed extends Component {
                     marginBottom: 50
                   }}
                 >
-                  <Image
-                    source={require("../assets/images/pngs/list-empty.png")}
-                  />
+                  <Image source={require("../assets/images/list-empty.png")} />
                 </View>
                 <View>
                   <Row>
