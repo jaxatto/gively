@@ -8,7 +8,6 @@ import {
   FlatList
 } from "react-native";
 import { Col, Row, Grid } from "react-native-easy-grid";
-import buttonTheme from "./Themes/buttonTheme";
 import {
   Container,
   Header,
@@ -16,14 +15,11 @@ import {
   Button,
   H1,
   H2,
-  List,
-  ListItem,
   Left,
   Right,
   Icon,
   Text,
-  Title,
-  StyleProvider
+  TouchableHighlight
 } from "native-base";
 import EventCard from "../components/eventCard";
 
@@ -70,6 +66,13 @@ const DATA = [
 ];
 
 class Feed extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  onPress = () => {
+    this.setState({});
+  };
   render() {
     return (
       <Container>
@@ -126,7 +129,7 @@ class Feed extends Component {
                         color: "red !important"
                       }}
                     >
-                      <Text>MY REWARDS</Text>
+                      <Text>MY PROFILE</Text>
                       <Icon name="arrow-round-forward" />
                     </Button>
                   </View>
@@ -143,24 +146,25 @@ class Feed extends Component {
                 >
                   <Image source={require("../assets/images/list-empty.png")} />
                 </View>
-                <View>
-                  <Row>
-                    <H2
-                      style={{
-                        color: "#0C0778",
-                        fontSize: 22,
-                        fontWeight: "bold",
-                        marginBottom: 30
-                      }}
-                    >
-                      Explore Austin Events
-                    </H2>
-                  </Row>
-                  <SafeAreaView style={{ flex: 1 }}>
-                    <FlatList
-                      data={DATA}
-                      keyExtractor={item => item.id}
-                      renderItem={({ item }) => (
+
+                <Row>
+                  <H2
+                    style={{
+                      color: "#0C0778",
+                      fontSize: 22,
+                      fontWeight: "bold",
+                      marginBottom: 30
+                    }}
+                  >
+                    Explore Austin Events
+                  </H2>
+                </Row>
+                <SafeAreaView style={{ flex: 1 }}>
+                  <FlatList
+                    data={DATA}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item, index }) => (
+                      <View>
                         <EventCard
                           id={item.id}
                           name={item.name}
@@ -168,11 +172,17 @@ class Feed extends Component {
                           date={item.date}
                           startTime={item.start_time}
                           endTime={item.end_Time}
+                          onPress={() =>
+                            this.props.navigation.navigate("EventPage", {
+                              key: item.id,
+                              item: item.name
+                            })
+                          }
                         />
-                      )}
-                    ></FlatList>
-                  </SafeAreaView>
-                </View>
+                      </View>
+                    )}
+                  />
+                </SafeAreaView>
               </Content>
             </Content>
           </View>
@@ -181,13 +191,5 @@ class Feed extends Component {
     );
   }
 }
-
-const customTheme = {
-  "NativeBase.Button": {
-    backgroundColor: "transparent",
-    borderColor: "#15AC8C",
-    color: "#15AC8C"
-  }
-};
 
 export default Feed;

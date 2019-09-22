@@ -17,7 +17,15 @@ import { stylesCard } from "./eventCard.styles";
 
 class EventCard extends Component {
   render() {
-    const { name, description, date, startTime, endTime, id } = this.props;
+    const {
+      name,
+      description,
+      date,
+      startTime,
+      endTime,
+      id,
+      onPress
+    } = this.props;
     const dateDate = new Date(date);
     const startTimeDate = new Date(`January 1, 2019 ${startTime}`);
     const endTimeDate = endTime ? new Date(`January 1, 2019 ${endTime}`) : null;
@@ -86,7 +94,7 @@ class EventCard extends Component {
                 </Text>
               </Col>
               <Col>
-                <Text style={stylesCard.signup}>
+                <Text style={stylesCard.signup} onPress={onPress}>
                   Sign Up&nbsp;
                   <Icon name="arrow-forward" style={stylesCard.arrow} />
                 </Text>
