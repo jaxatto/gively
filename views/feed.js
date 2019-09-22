@@ -127,10 +127,12 @@ class Feed extends Component {
                   >
                     <Button
                       rounded
+                      transparent
                       style={{
                         //  backgroundColor: "red !important",
-                        borderColor: "#15AC8C !important",
-                        color: "red !important"
+                        borderColor: "#15AC8C",
+                        borderStyle: "solid",
+                        borderWidth: 3
                       }}
                       onPress={() =>
                         this.props.navigation.navigate("ProfilePage")
