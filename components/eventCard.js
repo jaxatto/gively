@@ -12,6 +12,7 @@ import {
   Text
 } from "native-base";
 import { Col, Row, Grid } from "react-native-easy-grid";
+import { stylesCard } from "./eventCard.styles";
 
 class EventCard extends Component {
   render() {
@@ -22,12 +23,10 @@ class EventCard extends Component {
           <Col size={1}></Col>
           <Col size={3}>
             <Row>
-              <H3 style={{ fontWeight: "bold", fontSize: 14 }}>
-                {description}
-              </H3>
+              <H3 style={stylesCard.h3}>{name}</H3>
             </Row>
             <Row>
-              <Text>{name}</Text>
+              <Text>{description}</Text>
             </Row>
             <Row>
               <Text>{date}</Text>
@@ -37,26 +36,20 @@ class EventCard extends Component {
                 {startTime} - {endTime}
               </Text>
             </Row>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Icon
-              name="star-outline"
-              style={{
-                fontSize: 20,
-                color: "#15AC8C",
-                padding: 15
-              }}
-            />
-
-            <Text style={{ color: "#15AC8C" }}>500 points</Text>
-          </Col>
-          <Col>
-            <Button iconRight transparent>
-              <Text>Sign Up</Text>
-              <Icon name="arrow-forward" />
-            </Button>
+            <Row>
+              <Col style={stylesCard.col}>
+                <Text style={stylesCard.text}>
+                  <Icon name="star-outline" style={stylesCard.star} />
+                  &nbsp;500 points
+                </Text>
+              </Col>
+              <Col>
+                <Text style={stylesCard.signup}>
+                  Sign Up&nbsp;
+                  <Icon name="arrow-forward" style={stylesCard.arrow} />
+                </Text>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Grid>
