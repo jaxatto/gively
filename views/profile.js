@@ -1,17 +1,6 @@
 import React, { Component } from "react";
-import { View } from "react-native";
-import { Row } from "react-native-easy-grid";
-import {
-  Header,
-  Content,
-  Button,
-  H1,
-  H2,
-  Left,
-  Right,
-  Icon,
-  Text
-} from "native-base";
+import { Header, Content, Button, H1, Left, Right, Icon } from "native-base";
+import { Banner } from "../components/banner";
 
 export class Profile extends Component {
   render() {
@@ -41,26 +30,7 @@ export class Profile extends Component {
           </Right>
         </Header>
         <Content>
-          <View
-            style={{
-              flex: 1,
-              flexDirection: "column",
-              backgroundColor: "#15AC8C",
-              padding: 20
-            }}
-          >
-            <Row>
-              <H2 style={{ color: "white" }}>
-                <Icon name="gift" style={{ color: "white" }} />
-                &nbsp;2 Rewards
-              </H2>
-            </Row>
-            <Row>
-              <Text style={{ color: "white" }}>
-                You have rewards ready to donate!
-              </Text>
-            </Row>
-          </View>
+          <Banner title="2 rewards" body="You have rewards ready to donate!" />
         </Content>
       </>
     );
