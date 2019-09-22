@@ -29,7 +29,7 @@ class Feed extends Component {
             </Right>
           </Header>
           <Content>
-            <Text>You have no upcoming events</Text>
+            <Text>You have lots of upcoming </Text>
           </Content>
         </Container>
         <ScrollView>
